@@ -1,11 +1,28 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+# import models
+from .models import Cat
+
 # Create your views here.
 # In django these are called views but they act as controllers
 def index(request):
-  return HttpResponse('<h1>Its a cat collector</h1>')
+  return render(request, 'index.html')
 
 def about(request):
-  lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam a lorem non elit interdum congue ut vitae nibh. Nam maximus laoreet dui, hendrerit auctor ex convallis faucibus. Morbi posuere id nulla vitae facilisis. Morbi fermentum libero in varius malesuada. Cras condimentum lobortis neque, eu auctor dolor interdum quis. Nulla nec facilisis ante, vel efficitur nibh. Quisque venenatis augue condimentum nisi mollis rhoncus sit amet et leo.'
-  return HttpResponse(lorem)
+  return render(request, 'about.html')
+
+def contact(request):
+  return render(request, 'contact.html')
+
+
+# CATS
+def cats_index(request):
+  cats = Cat.objects.all()
+  return render(request, 'index.html', { 'cats': cats })
+
+
+# Steps for adding new pages and routes
+# 1. make a view function
+# 2. Make an HTML page
+# 3. Add a new path
