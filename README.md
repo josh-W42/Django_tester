@@ -20,7 +20,7 @@ To create django app
 To start server
 ```
  python mange.py runserver
-``
+```
 
 To create a new app:
 ```
